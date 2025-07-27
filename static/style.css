@@ -1,0 +1,19 @@
+/* static/style.css */
+body {
+    font-family: 'Cairo', sans-serif;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+}
+/* static/style.css */
+body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+}
+
+.card-title {
+    color: #0d6efd;
+}
+

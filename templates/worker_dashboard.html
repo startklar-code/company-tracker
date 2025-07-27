@@ -1,0 +1,39 @@
+<!-- templates/worker_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Worker Dashboard</title>
+</head>
+<body>
+    <h2>Welcome {{ username }}</h2>
+
+    <h3>Log Your Work</h3>
+    <form method="POST">
+        <label>Date:</label><br>
+        <input type="date" name="date"><br><br>
+
+        <label>Project Name:</label><br>
+        <input type="text" name="project"><br><br>
+
+        <label>Work Type:</label><br>
+        <input type="text" name="work_type"><br><br>
+
+        <label>Hours Worked:</label><br>
+        <input type="number" name="hours"><br><br>
+
+        <label>Remaining Leave Days:</label><br>
+        <input type="number" name="leave"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if message %}
+        <p style="color:green">{{ message }}</p>
+    {% endif %}
+
+    <br><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <a href="{{ url_for('worker_logs') }}">View My Work Logs</a>
+
+</body>
+</html>

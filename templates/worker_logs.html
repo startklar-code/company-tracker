@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Work Logs</title>
+</head>
+<body>
+    <h2>Welcome {{ username }} - Your Work Logs</h2>
+
+    {% if logs %}
+        <table border="1">
+            <tr>
+                <th>Date</th>
+                <th>Project</th>
+                <th>Work Type</th>
+                <th>Hours Worked</th>
+                <th>Remaining Leave</th>
+            </tr>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.date }}</td>
+                <td>{{ log.project }}</td>
+                <td>{{ log.work_type }}</td>
+                <td>{{ log.hours }}</td>
+                <td>{{ log.leave }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No work logs found.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('worker_dashboard') }}">⬅️ Back to Dashboard</a>
+</body>
+</html>
