@@ -1,19 +1,48 @@
-/* static/style.css */
 body {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    padding: 20px;
 }
 
-.login-box {
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+input, select, button {
+    display: block;
     width: 100%;
-    max-width: 400px;
-}
-/* static/style.css */
-body {
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
-.card-title {
-    color: #0d6efd;
+button {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
