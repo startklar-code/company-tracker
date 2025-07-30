@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>نظام تتبع العمال</title>
+  <style>
+    body {
+      font-family: Tahoma;
+      text-align: center;
+      background-color: #f9f9f9;
+      margin-top: 100px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .button {
+      display: block;
+      width: 250px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+    <h1>مرحبًا بك في النظام</h1>
+    <a href="{{ url_for('login') }}">🔐 تسجيل دخول العامل</a><br>
+    <a href="{{ url_for('register') }}">📝 تسجيل جديد</a><br>
+    <a href="{{ url_for('admin_login') }}">🛠️ تسجيل دخول الإدارة</a><br>
+    <a href="{{ url_for('create_admin_if_not_exists') }}">➕ إضافة مدير افتراضي</a>
+
+</body>
+</html>

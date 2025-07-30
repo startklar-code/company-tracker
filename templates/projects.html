@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>إدارة المشاريع</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #eef2f6;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .form-section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+      margin-left: 5px;
+    }
+    table th, table td {
+      vertical-align: middle !important;
+    }
+    .text-profit {
+      color: green;
+      font-weight: bold;
+    }
+    .text-loss {
+      color: red;
+      font-weight: bold;
+    }
+    .table-success-row {
+      background-color: #e8f8f0;
+    }
+    .table-danger-row {
+      background-color: #fdecea;
+    }
+    body {
+  background-color: #f9fafb;
+  padding: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+h1 {
+  font-weight: 700;
+  color: #34495e;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.form-section {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(50, 50, 93, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.form-section:hover {
+  box-shadow: 0 8px 24px rgba(50, 50, 93, 0.15);
+}
+
+label.form-label {
+  font-weight: 600;
+  color: #555;
+}
+
+input.form-control {
+  border: 1.5px solid #ced4da;
+  transition: border-color 0.3s ease;
+  border-radius: 8px;
+}
+
+input.form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px #a6c8ff;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #4a90e2, #357ABD);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(53, 122, 189, 0.4);
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #357ABD, #2a5d8f);
+}
+
+.btn-secondary {
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+  border: 1.5px solid #888;
+  color: #555;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e6ea;
+  border-color: #6c757d;
+  color: #444;
+}
+
+.table-responsive {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 12px;
+}
+
+table thead tr th {
+  background-color: #4a90e2 !important;
+  color: #fff !important;
+  font-weight: 700;
+  border: none !important;
+  padding: 15px 10px;
+  text-align: center;
+  border-radius: 15px 15px 0 0;
+}
+
+table tbody tr {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease;
+}
+
+table tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+table tbody tr td {
+  padding: 15px 10px;
+  vertical-align: middle;
+  border: none;
+}
+
+.text-success {
+  color: #28a745 !important;
+  font-weight: 700;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+  font-weight: 700;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgba(74, 144, 226, 0.15);
+}
+
+@media (max-width: 768px) {
+  .form-section {
+    padding: 20px 15px;
+  }
+  table thead tr th, table tbody tr td {
+    padding: 10px 5px;
+    font-size: 0.9rem;
+  }
+  button {
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="mb-4 text-center">📁 إدارة المشاريع</h1>
+
+    <!-- ✅ نموذج المشروع -->
+    <div class="form-section mb-5">
+      <form id="projectForm">
+        <input type="hidden" id="projectId">
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="name" class="form-label">اسم المشروع</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          <div class="col-md-3">
+            <label for="originalPrice" class="form-label">السعر الأصلي</label>
+            <input type="number" id="originalPrice" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label for="rawMaterialCost" class="form-label">تكلفة المواد</label>
+            <input type="number" id="rawMaterialCost" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">سعر الساعة</label>
+            <input type="number" id="hourlyRate" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label for="startDate" class="form-label">تاريخ البدء</label>
+            <input type="date" id="startDate" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label for="endDate" class="form-label">تاريخ الانتهاء</label>
+            <input type="date" id="endDate" class="form-control">
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label class="form-label">VorbreitGrundputz</label>
+            <input type="number" id="VorbreitGrundputz" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Grundputz</label>
+            <input type="number" id="Grundputz" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">vorbreitWeissputz</label>
+            <input type="number" id="vorbreitWeissputz" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">WeissputzDecke</label>
+            <input type="number" id="WeissputzDecke" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">WeeissputzWand</label>
+            <input type="number" id="WeeissputzWand" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">GipserAbrieb</label>
+            <input type="number" id="GipserAbrieb" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Constration</label>
+            <input type="number" id="Constration" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Peplanken</label>
+            <input type="number" id="Peplanken" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Nitz</label>
+            <input type="number" id="Nitz" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">FassadaAbrieb</label>
+            <input type="number" id="FassadaAbrieb" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Abtiecken</label>
+            <input type="number" id="Abtiecken" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Strichen</label>
+            <input type="number" id="Strichen" class="form-control">
+          </div>
+        </div>
+
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn btn-primary">💾 حفظ</button>
+          <button type="button" class="btn btn-secondary" onclick="clearForm()">🧹 مسح</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ✅ جدول المشاريع -->
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>اسم المشروع</th>
+            <th>السعر الأصلي</th>
+            <th>المواد</th>
+            <th>ساعات العمل</th>
+            <th>الربح / الخسارة</th>
+            <th>المدة</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="projectTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let editingId = null;
+
+    async function fetchProjects() {
+  const res = await fetch('/api/projects');
+  const projects = await res.json();
+  const tbody = document.getElementById('projectTable');
+  tbody.innerHTML = '';
+
+  projects.forEach(project => {
+    const totalHours = parseFloat(project.total_worker_hours || 0);
+    const hourlyRate = parseFloat(project.hourly_rate || 0); // تأكد أن API ترسل هذا
+    const rawMaterial = parseFloat(project.raw_material_cost || 0);
+    const originalPrice = parseFloat(project.original_price || 0);
+
+    const laborCost = totalHours * hourlyRate;
+    const totalCost = laborCost + rawMaterial;
+    const profit = originalPrice - totalCost;
+
+    const profitColor = profit >= 0 ? 'text-success' : 'text-danger';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${project.name}</td>
+      <td>${originalPrice.toFixed(2)}</td>
+      <td>${rawMaterial.toFixed(2)}</td>
+      <td>
+        ${laborCost.toFixed(2)}
+        <br><small class="text-muted">${totalHours} × ${hourlyRate}</small>
+      </td>
+      <td class="${profitColor} fw-bold">${profit.toFixed(2)}</td>
+      
+      <td>${project.duration || ''}</td>
+      <td>
+        <button onclick='editProject(${JSON.stringify(project)})'>✏ تعديل</button>
+        <button onclick="deleteProject(${project.id})">🗑 حذف</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+
+    function editProject(project) {
+      editingId = project.id;
+      document.getElementById('projectId').value = project.id;
+      document.getElementById('name').value = project.name || '';
+      document.getElementById('originalPrice').value = project.original_price || 0;
+      document.getElementById('rawMaterialCost').value = project.raw_material_cost || 0;
+      document.getElementById('hourlyRate').value = project.hourly_rate || 0;
+      document.getElementById('startDate').value = project.start_date || '';
+      document.getElementById('endDate').value = project.end_date || '';
+
+      document.getElementById('VorbreitGrundputz').value = project.VorbreitGrundputz || 0;
+      document.getElementById('Grundputz').value = project.Grundputz || 0;
+      document.getElementById('vorbreitWeissputz').value = project.vorbreitWeissputz || 0;
+      document.getElementById('WeissputzDecke').value = project.WeissputzDecke || 0;
+      document.getElementById('WeeissputzWand').value = project.WeeissputzWand || 0;
+      document.getElementById('GipserAbrieb').value = project.GipserAbrieb || 0;
+      document.getElementById('Constration').value = project.Constration || 0;
+      document.getElementById('Peplanken').value = project.Peplanken || 0;
+      document.getElementById('Nitz').value = project.Nitz || 0;
+      document.getElementById('FassadaAbrieb').value = project.FassadaAbrieb || 0;
+      document.getElementById('Abtiecken').value = project.Abtiecken || 0;
+      document.getElementById('Strichen').value = project.Strichen || 0;
+    }
+
+    async function deleteProject(id) {
+      if (confirm('هل أنت متأكد من الحذف؟')) {
+        await fetch(`/api/projects/${id}`, { method: 'DELETE' });
+        fetchProjects();
+      }
+    }
+
+    async function submitForm(event) {
+      event.preventDefault();
+
+      const data = {
+        id: editingId,
+        name: document.getElementById('name').value,
+        originalPrice: parseFloat(document.getElementById('originalPrice').value),
+        rawMaterialCost: parseFloat(document.getElementById('rawMaterialCost').value),
+        hourlyRate: parseFloat(document.getElementById('hourlyRate').value || 0),
+        startDate: document.getElementById('startDate').value,
+        endDate: document.getElementById('endDate').value,
+        VorbreitGrundputz: parseFloat(document.getElementById('VorbreitGrundputz').value || 0),
+        Grundputz: parseFloat(document.getElementById('Grundputz').value || 0),
+        vorbreitWeissputz: parseFloat(document.getElementById('vorbreitWeissputz').value || 0),
+        WeissputzDecke: parseFloat(document.getElementById('WeissputzDecke').value || 0),
+        WeeissputzWand: parseFloat(document.getElementById('WeeissputzWand').value || 0),
+        GipserAbrieb: parseFloat(document.getElementById('GipserAbrieb').value || 0),
+        Constration: parseFloat(document.getElementById('Constration').value || 0),
+        Peplanken: parseFloat(document.getElementById('Peplanken').value || 0),
+        Nitz: parseFloat(document.getElementById('Nitz').value || 0),
+        FassadaAbrieb: parseFloat(document.getElementById('FassadaAbrieb').value || 0),
+        Abtiecken: parseFloat(document.getElementById('Abtiecken').value || 0),
+        Strichen: parseFloat(document.getElementById('Strichen').value || 0)
+      };
+
+      const method = editingId ? 'PUT' : 'POST';
+      const url = editingId ? `/api/projects/${editingId}` : '/api/projects';
+
+      await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      clearForm();
+      fetchProjects();
+    }
+
+    function clearForm() {
+      document.getElementById('projectForm').reset();
+      editingId = null;
+    }
+
+    document.getElementById('projectForm').addEventListener('submit', submitForm);
+    window.onload = fetchProjects;
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تعديل السجل</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>تعديل السجل</h2>
+        <form method="POST">
+            <label>اسم المشروع</label>
+            <input type="text" name="project_name" value="{{ work.project_name }}" required>
+
+            <label>التاريخ</label>
+            <input type="date" name="work_date" value="{{ work.work_date }}" required>
+
+            <label>ساعات العمل</label>
+            <input type="number" name="hours_worked" value="{{ work.hours_worked }}" step="0.1" required>
+
+            <label>سعر الساعة</label>
+            <input type="number" name="hourly_rate" value="{{ work.hourly_rate }}" step="0.01" required>
+
+            <label>الإجازة</label>
+            <input type="number" name="vacation_days" value="{{ work.vacation_days }}" required>
+
+            <button type="submit">تحديث</button>
+        </form>
+    </div>
+</body>
+</html>
